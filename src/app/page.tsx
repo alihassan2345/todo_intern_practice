@@ -1,11 +1,12 @@
+import Inbox from '@/Components/Inbox'
 import React from 'react'
 
 const page = () => {
   return (
     <div>
       
-       
-       
+      <Inbox/>
+
     </div>
   )
 }
