@@ -4,23 +4,7 @@ import React, { useState } from 'react'
 
 const page = () => {
   const [task, setTask] = useState<string>('')
-  const [data, setData] = useState<{ task: string; status: string }[]>([
-    { task: "task", status: "complete" },
-    { task: "task", status: "complete" },
-    { task: "task", status: "complete" },
-    { task: "task", status: "complete" },
-    { task: "task", status: "complete" },
-    { task: "task", status: "complete" },
-    { task: "task", status: "complete" },{ task: "task", status: "complete" },
-    { task: "task", status: "complete" },
-    { task: "task", status: "complete" },{ task: "task", status: "complete" },
-    { task: "task", status: "complete" },
-    { task: "task", status: "complete" },{ task: "task", status: "complete" },
-    { task: "task", status: "complete" },
-    { task: "task", status: "complete" },
-    { task: "task", status: "complete" }
-    
-  ])
+  const [data, setData] = useState<{ task: string; status: string }[]>([])
   const [status, setStatus] = useState<string>('complete')
   const [color, setColor] = useState<string>('bg-green-600')
 
@@ -47,7 +31,7 @@ const page = () => {
   }
 
 
-  
+
   function color2() {
 
     if (status === 'pending') {
@@ -63,7 +47,7 @@ const page = () => {
 
 
   return (
-    <div className='bg-gradient-to-r from-blue-500 to-purple-600 h-screen'>
+    <div className='bg-gradient-to-r from-gray-500 to--500 h-screen'>
 
       <div className='flex justify-center pt-[50px] gap-[30px]'>
 
@@ -71,7 +55,7 @@ const page = () => {
 
 
 
-        <select name="options" onClick={color2} className={`${color} rounded-t-md ` } id="options" value={status} onChange={(e) => setStatus(e.target.value)}>
+        <select name="options" onClick={color2} className={`${color} rounded-t-md `} id="options" value={status} onChange={(e) => setStatus(e.target.value)}>
           <option className='bg-green-600 ' value="complete">complete</option>
           <option className='bg-yellow-600 ' value="pending">pending</option>
           <option className='bg-red-600 rounded-b-md' value="later">later</option>
@@ -82,48 +66,49 @@ const page = () => {
 
 
 
-      <div className='flex justify-around mt-[50px] '>
+      <div className='flex justify-around mt-[90px] '>
 
 
-        <div className='bg-amber-800 w-[300px] text-center h-[400px]'>
-          <h1>
+        <div className=' w-[300px] text-center h-[400px] overflow-scroll [&::-webkit-scrollbar]:hidden  overflow-x-hidden rounded-t-lg '>
+          <h1 className='bg-yellow-500 w-[300px] h-[30px] rounded-t-lg fixed top-35 '>
             Pending Tasks
           </h1>
-          <div>
-          {pendingTasks().map((item, index) => (
-            <div key={index}>
-              <h3>{item.task}</h3>
-            </div>
-            
-          ))}
+          <div className='flex flex-col gap-[10px] '>
+            {pendingTasks().map((item, index) => (
+              <div className='' key={index}>
+                <h3 className='bg-yellow-700 rounded-r-2xl'>{item.task} </h3>
+              </div>
+            ))}
           </div>
         </div>
 
 
 
-        <div className='bg-amber-800 w-[300px] text-center h-[400px] overflow-scroll  overflow-x-hidden rounded-t-md '>
-          <h1 className='bg-green-500 h-[30px] rounded-t-md'>
+        <div className=' w-[300px] text-center h-[400px] overflow-scroll [&::-webkit-scrollbar]:hidden  overflow-x-hidden rounded-t-lg '>
+          <h1 className='bg-green-500 w-[300px] h-[30px] rounded-t-lg fixed top-35'>
             Complete Tasks
           </h1>
           <div className='flex flex-col gap-[10px] '>
-          {completeTasks().map((item, index) => (
-            <div className='' key={index}>
-              <h3>{item.task} </h3>
-            </div>
-          ))}
+            {completeTasks().map((item, index) => (
+              <div className='' key={index}>
+                <h3 className='bg-green-700 rounded-r-2xl'>{item.task} </h3>
+              </div>
+            ))}
           </div>
         </div>
 
 
-        <div className='bg-amber-800 w-[300px] text-center h-[400px]'>
-          <h1>
-            later Tasks
+        <div className=' w-[300px] text-center h-[400px] overflow-scroll [&::-webkit-scrollbar]:hidden  overflow-x-hidden rounded-t-lg '>
+          <h1 className='bg-red-500 w-[300px] h-[30px] rounded-t-lg fixed top-35 '>
+            Later Tasks
           </h1>
-          {LaterTasks().map((item, index) => (
-            <div key={index}>
-              <h3>{item.task}</h3>
-            </div>
-          ))}
+          <div className='flex flex-col gap-[10px] '>
+            {LaterTasks().map((item, index) => (
+              <div className='' key={index}>
+                <h3 className='bg-red-700 rounded-r-2xl'>{item.task} </h3>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
