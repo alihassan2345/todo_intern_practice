@@ -47,7 +47,7 @@ const page = () => {
 
 
   return (
-    <div className='bg-gradient-to-r from-gray-500 to--500 h-screen'>
+    <div className='bg-gradient-to-t from-purple-600 to-purple-900 h-screen'>
 
       <div className='flex justify-center pt-[50px] gap-[30px]'>
 
@@ -61,55 +61,58 @@ const page = () => {
           <option className='bg-red-600 rounded-b-md' value="later">later</option>
         </select>
 
-        <button className='bg-blue-950 text-white p-[5px] rounded-md' onClick={addTask} >Add Task</button>
+        <button className='bg-neutral-900 text-white p-[5px] rounded-md' onClick={addTask} >Add Task</button>
       </div>
 
 
 
-      <div className='flex justify-around mt-[90px] '>
+      <div className='flex justify-around  mt-[90px] '>
 
 
-        <div className=' w-[300px] text-center h-[400px] overflow-scroll [&::-webkit-scrollbar]:hidden  overflow-x-hidden rounded-t-lg '>
-          <h1 className='bg-yellow-500 w-[300px] h-[30px] rounded-t-lg fixed top-35 '>
+        <div className='bg-black w-[300px] rounded-b-2xl h-[400px] overflow-scroll [&::-webkit-scrollbar]:hidden  overflow-x-hidden  '>
+          <h1 className='bg-black text-xl font-semibold text-white w-[300px] h-[50px] pt-[10px] pl-[30px]  h-[30px] rounded-t-3xl fixed top-34.5 pt-[5px] '>
             Pending Tasks
           </h1>
-          <div className='flex flex-col gap-[10px] '>
+          <div className='flex flex-col gap-[10px]  items-center  '>
             {pendingTasks().map((item, index) => (
-              <div className='' key={index}>
-                <h3 className='bg-yellow-700 rounded-r-2xl'>{item.task} </h3>
+              <div className='pt-[10px] w-[250px] ' key={index}>
+                <h3 className='bg-neutral-800 text-gray-300 p-[10px] pl-[15px] rounded-md'>{item.task} </h3>
               </div>
             ))}
           </div>
         </div>
 
 
-
-        <div className=' w-[300px] text-center h-[400px] overflow-scroll [&::-webkit-scrollbar]:hidden  overflow-x-hidden rounded-t-lg '>
-          <h1 className='bg-green-500 w-[300px] h-[30px] rounded-t-lg fixed top-35'>
+        <div className='bg-black w-[300px] rounded-b-2xl h-[400px] overflow-scroll [&::-webkit-scrollbar]:hidden  overflow-x-hidden  '>
+          <h1 className='bg-black text-xl font-semibold text-white w-[300px] h-[50px] pt-[10px] pl-[30px]  h-[30px] rounded-t-3xl fixed top-34.5 pt-[5px] '>
             Complete Tasks
           </h1>
-          <div className='flex flex-col gap-[10px] '>
+          <div className='flex flex-col gap-[10px]  items-center  '>
             {completeTasks().map((item, index) => (
-              <div className='' key={index}>
-                <h3 className='bg-green-700 rounded-r-2xl'>{item.task} </h3>
+              <div className='pt-[10px] w-[250px] ' key={index}>
+                <h3 className='bg-neutral-800 text-gray-300 p-[10px] pl-[15px] rounded-md'>{item.task} </h3>
               </div>
             ))}
           </div>
         </div>
 
-
-        <div className=' w-[300px] text-center h-[400px] overflow-scroll [&::-webkit-scrollbar]:hidden  overflow-x-hidden rounded-t-lg '>
-          <h1 className='bg-red-500 w-[300px] h-[30px] rounded-t-lg fixed top-35 '>
+        <div className='bg-black w-[300px] rounded-b-2xl h-[400px] overflow-scroll [&::-webkit-scrollbar]:hidden  overflow-x-hidden  '>
+          <h1 className='bg-black text-xl font-semibold text-white w-[300px] h-[50px] pt-[10px] pl-[30px]  h-[30px] rounded-t-3xl fixed top-34.5 pt-[5px]  '>
             Later Tasks
           </h1>
-          <div className='flex flex-col gap-[10px] '>
+          <div className='flex flex-col gap-[10px]  items-center  '>
             {LaterTasks().map((item, index) => (
-              <div className='' key={index}>
-                <h3 className='bg-red-700 rounded-r-2xl'>{item.task} </h3>
+              <div className='pt-[10px] w-[250px] ' key={index}>
+                <h3 className='bg-neutral-800 text-gray-300 p-[10px] pl-[15px] rounded-md'>{item.task} </h3>
               </div>
             ))}
           </div>
         </div>
+
+
+       
+
+
       </div>
 
 
