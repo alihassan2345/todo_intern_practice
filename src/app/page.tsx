@@ -3,69 +3,112 @@ import React, { useState } from 'react'
 
 
 const page = () => {
-  const [task, setTask] = useState('')
-  const [status, setStatus] = useState('pending')
+  const [task, setTask] = useState<string>('')
+  const [data, setData] = useState<{ task: string; status: string }[]>([])
+  const [status, setStatus] = useState<string>('complete')
+  const [color, setColor] = useState<string>('bg-green-600')
+
+  function addTask() {
+    const newTask = { task: task, status: status }
+    setData([...data, newTask])
+    setTask('')
+    setStatus('complete')
+    setColor('bg-green-600')
+
+
+  }
+
+  function pendingTasks() {
+    return data.filter((item) => item.status === 'pending')
+  }
+
+  function completeTasks() {
+    return data.filter((item) => item.status === 'complete')
+  }
+
+  function LaterTasks() {
+    return data.filter((item) => item.status === 'later')
+  }
 
 
   
+  function color2() {
+
+    if (status === 'pending') {
+      return setColor('bg-yellow-600')
+    }
+    else if (status === 'complete') {
+      return setColor('bg-green-600')
+    } else {
+      return setColor('bg-red-600')
+    }
+  }
+
+
 
   return (
-    <div>
+    <div className='bg-gradient-to-r from-blue-500 to-purple-600'>
+
+      <div className='flex justify-center mt-[50px] gap-[30px]'>
+
+        <input className=' border-2 w-[500px] rounded-2xl' type="text" name="" id="" value={task} onChange={(e) => setTask(e.target.value)} />
 
 
-      <div className='flex justify-center mt-[50px]'>
 
-        <input className=' border-2 ' type="text" name="" id="" value={task} onChange={(e) => setTask(e.target.value)}/>
-
-
-
-        <select name="options" id="options" value={status} onChange={(e) => setStatus(e.target.value)}>
-          <option value="complete">complete</option>
-          <option value="pending">pending</option>
-          <option value="later">later</option>
+        <select name="options" onClick={color2} className={`${color} rounded-t-md ` } id="options" value={status} onChange={(e) => setStatus(e.target.value)}>
+          <option className='bg-green-600 ' value="complete">complete</option>
+          <option className='bg-yellow-600 ' value="pending">pending</option>
+          <option className='bg-red-600 rounded-b-md' value="later">later</option>
         </select>
-      </div>
 
-
-      <div>
-
-
-
+        <button className='bg-blue-950 text-white p-[5px] rounded-md' onClick={addTask} >Add Task</button>
       </div>
 
 
 
+      <div className='flex justify-around mt-[50px] '>
+
+
+        <div className='bg-amber-800 w-[300px] text-center h-[400px]'>
+          <h1>
+            Pending Tasks
+          </h1>
+          <div>
+          {pendingTasks().map((item, index) => (
+            <div key={index}>
+              <h3>{item.task}</h3>
+            </div>
+            
+          ))}
+          </div>
+        </div>
 
 
 
+        <div className='bg-amber-800 w-[300px] text-center h-[400px]'>
+          <h1>
+            Complete Tasks
+          </h1>
+          {completeTasks().map((item, index) => (
+            <div key={index}>
+              <h3>{item.task} </h3>
+            </div>
+          ))}
+        </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      <div>
-
-
+        <div className='bg-amber-800 w-[300px] text-center h-[400px]'>
+          <h1>
+            later Tasks
+          </h1>
+          {LaterTasks().map((item, index) => (
+            <div key={index}>
+              <h3>{item.task}</h3>
+            </div>
+          ))}
+        </div>
       </div>
 
-
-
-
-      <div>
-
-
-      </div>
 
     </div>
   )
