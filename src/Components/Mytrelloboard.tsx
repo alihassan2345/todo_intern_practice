@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Inbox = () => {
+const Mytrelloboard = () => {
   return (
     <div>
       
@@ -8,4 +8,4 @@ const Inbox = () => {
   )
 }
 
-export default Inbox
+export default Mytrelloboard
