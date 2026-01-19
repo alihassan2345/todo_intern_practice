@@ -4,7 +4,23 @@ import React, { useState } from 'react'
 
 const page = () => {
   const [task, setTask] = useState<string>('')
-  const [data, setData] = useState<{ task: string; status: string }[]>([])
+  const [data, setData] = useState<{ task: string; status: string }[]>([
+    { task: "task", status: "complete" },
+    { task: "task", status: "complete" },
+    { task: "task", status: "complete" },
+    { task: "task", status: "complete" },
+    { task: "task", status: "complete" },
+    { task: "task", status: "complete" },
+    { task: "task", status: "complete" },{ task: "task", status: "complete" },
+    { task: "task", status: "complete" },
+    { task: "task", status: "complete" },{ task: "task", status: "complete" },
+    { task: "task", status: "complete" },
+    { task: "task", status: "complete" },{ task: "task", status: "complete" },
+    { task: "task", status: "complete" },
+    { task: "task", status: "complete" },
+    { task: "task", status: "complete" }
+    
+  ])
   const [status, setStatus] = useState<string>('complete')
   const [color, setColor] = useState<string>('bg-green-600')
 
@@ -47,11 +63,11 @@ const page = () => {
 
 
   return (
-    <div className='bg-gradient-to-r from-blue-500 to-purple-600'>
+    <div className='bg-gradient-to-r from-blue-500 to-purple-600 h-screen'>
 
-      <div className='flex justify-center mt-[50px] gap-[30px]'>
+      <div className='flex justify-center pt-[50px] gap-[30px]'>
 
-        <input className=' border-2 w-[500px] rounded-2xl' type="text" name="" id="" value={task} onChange={(e) => setTask(e.target.value)} />
+        <input className=' border-2 w-[500px] rounded-2xl p-[10px] font-bold ' type="text" name="" placeholder='Enter you todo' id="" value={task} onChange={(e) => setTask(e.target.value)} />
 
 
 
@@ -85,15 +101,17 @@ const page = () => {
 
 
 
-        <div className='bg-amber-800 w-[300px] text-center h-[400px]'>
-          <h1>
+        <div className='bg-amber-800 w-[300px] text-center h-[400px] overflow-scroll  overflow-x-hidden rounded-t-md '>
+          <h1 className='bg-green-500 h-[30px] rounded-t-md'>
             Complete Tasks
           </h1>
+          <div className='flex flex-col gap-[10px] '>
           {completeTasks().map((item, index) => (
-            <div key={index}>
+            <div className='' key={index}>
               <h3>{item.task} </h3>
             </div>
           ))}
+          </div>
         </div>
 
 
